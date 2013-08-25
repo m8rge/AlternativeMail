@@ -2,7 +2,7 @@
 
 class AlternativeMailTest extends \PHPUnit_Framework_TestCase
 {
-    public function textMail()
+    public function testMail()
     {
         $this->assertTrue(true);
 //        $email = new AlternativeMail();
