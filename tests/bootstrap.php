@@ -1,3 +1,3 @@
 <?php
 
-require_once(__DIR__ . '/../src/AlternativeMail.php');
+require_once(__DIR__ . '/../AlternativeMail.php');

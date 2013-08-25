@@ -12,7 +12,7 @@
     ],
     "autoload": {
         "psr-0": {
-            "m8rge": "src/"
+            "m8rge": ""
         }
     },
     "target-dir": "m8rge",
@@ -20,7 +20,7 @@
         "php": ">=5.3.0",
         "ext-mbstring": "*"
     },
-    "recommend": {
+    "suggest": {
         "ext-fileinfo": "*"
     },
     "require-dev": {
