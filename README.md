@@ -2,6 +2,7 @@ AlternativeMail
 ===============
 
 [![Build Status](https://travis-ci.org/m8rge/AlternativeMail.png?branch=master)](https://travis-ci.org/m8rge/AlternativeMail)
+
 Simple php class for utf8 html/text emails with small attachments
 
 ## Using
