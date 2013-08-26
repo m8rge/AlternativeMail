@@ -241,6 +241,8 @@ class AlternativeMail
      */
     public function send()
     {
+        list($additionalHeaders, $body) = $this->getMailData();
+
         $to = array_map(
             function ($value) {
                 if (!empty($value['name'])) {
@@ -252,13 +254,14 @@ class AlternativeMail
             $this->to
         );
         $to = implode(', ', $to);
-        if (!empty($this->from['name'])) {
-            $from = mb_encode_mimeheader($this->from['name']) . " <{$this->from['email']}>";
-        } else {
-            $from = $this->from['email'];
+        if (!empty($this->from['email'])) {
+            if (!empty($this->from['name'])) {
+                $from = mb_encode_mimeheader($this->from['name']) . " <{$this->from['email']}>";
+            } else {
+                $from = $this->from['email'];
+            }
+            $additionalHeaders[] = 'From: ' . $from;
         }
-        list($additionalHeaders, $body) = $this->getMailData();
-        $additionalHeaders[] = 'From: ' . $from;
 
         $subject = mb_encode_mimeheader($this->subject, 'UTF-8');
         $additionalHeaders = implode("\r\n", $additionalHeaders);

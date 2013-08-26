@@ -1,6 +1,7 @@
 {
     "name": "m8rge/alternative-mail",
     "description": "Simple class for utf8 html/text emails with small attachments",
+    "keywords": ["mail", "simple", "small", "standalone", "no-dependency", "attachment", "utf8", "utf-8"],
     "minimum-stability": "dev",
     "license": "MIT",
     "authors": [
