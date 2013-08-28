@@ -132,7 +132,7 @@ class AlternativeMail
     {
         array_unshift($headers, '--' . $boundary);
         $headers = implode("\r\n", $headers);
-        $body = $headers . "\r\n\r\n" . $body . "\r\n";
+        $body = $headers . "\r\n\r\n" . $body . "\r\n\r\n";
 
         return $body;
     }
@@ -151,7 +151,7 @@ class AlternativeMail
         $headers[] = 'Content-Transfer-Encoding: base64';
         $bodyVarName = $part . 'Body';
         /** @noinspection PhpUndefinedFieldInspection */
-        $body = chunk_split(base64_encode($this->$bodyVarName));
+        $body = substr(chunk_split(base64_encode($this->$bodyVarName)), 0 ,-2);
 
         return array($headers, $body);
     }
@@ -202,7 +202,7 @@ class AlternativeMail
                 $headers[] = "Content-Type: $mimeType; name=\"$fileName\"";
                 $headers[] = "Content-Disposition: attachment; filename=\"$fileName\"";
                 $headers[] = 'Content-Transfer-Encoding: base64';
-                $body = chunk_split(base64_encode(file_get_contents($attachment['file'])));
+                $body = substr(chunk_split(base64_encode(file_get_contents($attachment['file']))), 0, -2);
                 $attachments[] = array($headers, $body);
             }
         }
