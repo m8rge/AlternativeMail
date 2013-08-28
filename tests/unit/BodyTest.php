@@ -39,4 +39,4 @@ class BodyTest extends TestCase
         $this->assertEmpty($additional_headers);
     }
 
-} 
+}
