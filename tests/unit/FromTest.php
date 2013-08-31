@@ -39,4 +39,30 @@ class FromTest extends TestCase
             $additional_headers
         );
     }
+
+    public function testUtf8LongFromName()
+    {
+        $name = 'Очень длинное имя и фамилия';
+        list($to, $subject, $message, $additional_headers) = $this->mail
+            ->setFrom('sender@mail.com', $name)->send();
+        $this->assertEmpty($to);
+        $this->assertEmpty($subject);
+        $this->assertEmpty($message);
+        $this->assertContains("\r\n", $additional_headers);
+        $additional_headers = preg_replace("/\r\n\\s+/", ' ', $additional_headers);
+        $this->assertEquals("From: $name <sender@mail.com>", mb_decode_mimeheader($additional_headers));
+    }
+
+    public function testLongFromName()
+    {
+        $name = 'Very very long sender name with some lorem ipsum text Very very long sender name with some lorem ipsum text';
+        list($to, $subject, $message, $additional_headers) = $this->mail
+            ->setFrom('sender@mail.com', $name)->send();
+        $this->assertEmpty($to);
+        $this->assertEmpty($subject);
+        $this->assertEmpty($message);
+        $this->assertContains("\r\n", $additional_headers);
+        $additional_headers = preg_replace("/\r\n\\s+/", ' ', $additional_headers);
+        $this->assertEquals("From: $name <sender@mail.com>", mb_decode_mimeheader($additional_headers));
+    }
 }

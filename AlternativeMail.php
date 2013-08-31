@@ -73,6 +73,7 @@ class AlternativeMail
     }
 
     /**
+     * Autodetect mime type relies on php fileinfo extension
      * @param string $file
      * @param string $forceFileName
      * @param string $forceMimeType

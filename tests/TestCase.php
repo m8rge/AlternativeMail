@@ -18,7 +18,8 @@ class TestCase extends \PHPUnit_Framework_TestCase
      */
     public function assertHeaders($expected, $actual)
     {
-        $actual = explode("\r\n", $actual);
+        preg_match_all("/^([^:]+?:\\s.+?)(?:\r\n|$)(?!\\s)/sm", $actual, $matches);
+        $actual = $matches[1];
         $this->assertSameSize($expected, $actual);
         foreach ($expected as $header) {
             $this->assertContains($header, $actual, "Failed asserting that an ".print_r($actual, true)."contains '$header'");
