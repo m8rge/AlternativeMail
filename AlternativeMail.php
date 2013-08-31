@@ -255,6 +255,9 @@ class AlternativeMail
             $this->to
         );
         $to = implode(', ', $to);
+        if (strlen($to) > 78) {
+            $to = wordwrap($to, 78, "\r\n\t");
+        }
         if (!empty($this->from['email'])) {
             if (!empty($this->from['name'])) {
                 $from = mb_encode_mimeheader($this->from['name']) . " <{$this->from['email']}>";
