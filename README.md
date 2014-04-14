@@ -1,4 +1,4 @@
-AlternativeMail [![Build Status](https://travis-ci.org/m8rge/AlternativeMail.png?branch=master)](https://travis-ci.org/m8rge/AlternativeMail)
+AlternativeMail [![Build Status](https://travis-ci.org/m8rge/AlternativeMail.png?branch=master)](https://travis-ci.org/m8rge/AlternativeMail) [![SensioLabsInsight](https://insight.sensiolabs.com/projects/82765052-0be2-445e-92ad-cd494a1e4534/mini.png)](https://insight.sensiolabs.com/projects/82765052-0be2-445e-92ad-cd494a1e4534)
 ===============
 
 Simple php class for utf8 html/text emails with small attachments
